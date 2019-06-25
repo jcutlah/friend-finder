@@ -1,12 +1,14 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-require('./app/routing/apiRoutes')(app);
-require('./app/routing/htmlRoutes')(app, path);
-const PORT = process.env.PORT || 8080;
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+const PORT = process.env.PORT || 8080;
+
+let friends = require('./app/data/friends');
+
+require('./app/routing/apiRoutes')(app);
+require('./app/routing/htmlRoutes')(app, path);
 
 
 
