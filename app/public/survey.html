@@ -18,131 +18,137 @@
     </style>
 </head>
 <body>
-    <form id="friend-form" action="/api/friends" method="post">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input name="name" type="text">
+    <div class="jumbotron">
+        <div class="form-header text-center">
+            <h1>Find a Friend</h1>
+            <p>Use the form below to answer some questions about yourself and we'll find you the person with the closest match to you.</p>
         </div>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input name="username" type="text">
-        </div>
-        <div class="form-group">
-            <label for="photo">Photo URL</label>
-            <input name="photo" type='text'>
-        </div>
-        <div class="form-group">
-            <label for="a">TVs are circles</label>
-            <select name="a">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="b">Cups hold sand</label>
-            <select name="b">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="c">Plants drink water</label>
-            <select name="c">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="d">You spin me right round</label>
-            <select name="d">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="e">Sunglasses if you're outside</label>
-            <select name="e">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="f">Who needs enemies when you have friends like these?</label>
-            <select name="f">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="g">Hiking and backpacking is a nerdy passtime</label>
-            <select name="g">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="h">If you can't tell someone is a surfer or rock climber when you first meet them, chances are they will bring it up in your first conversation (and then will not cease blabbing about it incessantly</label>
-            <select name="h">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="i">AC is nice in the summer time</label>
-            <select name="i">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="j">This is the last question</label>
-            <select name="j">
-                <option value="">Please Select</option>
-                <option value="1">1 - Strongly Agree</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5 - Strongly Disagree</option>
-            </select>
-        </div>
-        <input type='submit' value="Submit">
-    </form>
+        <form id="friend-form" action="/api/friends" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input required name="name" type="text">
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input required name="username" type="text">
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo URL</label>
+                <input required name="photo" type='text'>
+            </div>
+            <div class="form-group">
+                <label for="a">TVs are circles</label>
+                <select required name="a">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="b">Cups hold sand</label>
+                <select required name="b">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="c">Plants drink water</label>
+                <select required name="c">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="d">You spin me right round</label>
+                <select required name="d">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="e">Sunglasses if you're outside</label>
+                <select required name="e">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="f">Who needs enemies when you have friends like these?</label>
+                <select required name="f">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="g">Hiking and backpacking is a nerdy passtime</label>
+                <select required name="g">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="h">If you can't read a book by its cover, then it isn't probably not a bad book</label>
+                <select required name="h">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="i">AC is nice in the summer time</label>
+                <select required name="i">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="j">This is the last question</label>
+                <select required name="j">
+                    <option value="">Please Select</option>
+                    <option value="1">1 - Strongly Agree</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Strongly Disagree</option>
+                </select>
+            </div>
+            <input required type='submit' value="Submit">
+        </form>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $('#friend-form').on('submit', function(e){
@@ -165,8 +171,10 @@
                 ]
             }
             console.log(person);
+            localStorage.setItem('friendFinderUsername',person.username);
             $.post('/api/friends',person).done(function(response){
                 console.log(response);
+                location.href = "/";
             }).fail(function(err){
                 console.log(err);
             });
