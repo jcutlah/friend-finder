@@ -16,7 +16,6 @@ module.exports = function(app, path){
                 friend = friends[l];
                 for (i=0;i<og.scores.length;i++){
                     score += Math.abs(parseInt(og.scores[i]) - parseInt(friend.scores[i]));
-                    console.log(typeof score, score);
                 }
                 if (score <= compatible){
                     compatible = score;
@@ -39,9 +38,13 @@ module.exports = function(app, path){
                 break;
             }
         }
-        console.log(`og: ${JSON.stringify(og)}`);
-        console.log("ideal friend: ", findCompatible(og));
-        res.json(findCompatible(og))
+        if (og){
+            // console.log(`og: ${JSON.stringify(og)}`);
+            // console.log("ideal friend: ", findCompatible(og));
+            res.json(findCompatible(og))
+        } else {
+            res.json({error: `Couldn't locate username ${req.params.username}`});
+        }
     })
 
     app.post('/api/friends', function(req, res){
