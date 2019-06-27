@@ -10,8 +10,8 @@ This app was built entirely by James Cutler, based on instructions provided by t
 Technologies:
 
 - Backend:
-
-  - npm express
+  - Node.js
+  - NPM Express
 
 - Frontend:
 
