@@ -15,13 +15,19 @@
         form#friend-form input[type="text"] {
             width: 100%;
         }
+        #home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="jumbotron">
         <div class="form-header text-center">
-            <h1>Find a Friend</h1>
-            <p>Use the form below to answer some questions about yourself and we'll find you the person with the closest match to you.</p>
+            <span id="home-link"><a href="/">Home</a></span>
+            <h1>Tell Us About You</h1>
+            <p>Use the form below to answer some questions about yourself. This will allow us to match you up with your next friend!</p>
         </div>
         <form id="friend-form" action="/api/friends" method="post">
             <div class="form-group">
@@ -171,7 +177,7 @@
                 ]
             }
             console.log(person);
-            localStorage.setItem('friendFinderUsername',person.username);
+            localStorage.setItem('ff_username',person.username);
             $.post('/api/friends',person).done(function(response){
                 console.log(response);
                 location.href = "/";

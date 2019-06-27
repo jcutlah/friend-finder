@@ -1,28 +1,48 @@
 const friends = require('../data/friends.js');
-console.log(friends);
 
 module.exports = function(app, path){
 
     function findCompatible(og){
+        console.log(friends);
         let compatible = 0
         let friend;
+        console.log(JSON.stringify(og));
+        console.log(og.username)
         for (l=0;l<friends.length;l++){
-            let score = 0;
-            friend = friends[l];
-            for (i=0;i<og.scores.length;i++){
-                score += Math.abs(parseInt(og.scores[i]) - parseInt(friend.scores[i]));
-                console.log(typeof score, score);
-            }
-            if (score <= compatible){
-                compatible = score;
+            console.log(friends[l].username);
+            if (og.username != friends[l].username){
+                console.log('unique friend found');
+                let score = 0;
+                friend = friends[l];
+                for (i=0;i<og.scores.length;i++){
+                    score += Math.abs(parseInt(og.scores[i]) - parseInt(friend.scores[i]));
+                    console.log(typeof score, score);
+                }
+                if (score <= compatible){
+                    compatible = score;
+                }
             }
         }
-        return console.log("Ideal friend: ", friend);
+        return {match: friend, user:og}
     }
 
     app.get('/api/friends', function(req, res){
         res.json(friends);
     });
+
+    app.get('/api/friends/:username', function(req, res){
+        console.log(`endpoint hit for ${req.params.username}`);
+        let og;
+        for (i=0;i<friends.length;i++){
+            if (req.params.username === friends[i].username){
+                og = friends[i];
+                break;
+            }
+        }
+        console.log(`og: ${JSON.stringify(og)}`);
+        console.log("ideal friend: ", findCompatible(og));
+        res.json(findCompatible(og))
+    })
 
     app.post('/api/friends', function(req, res){
         console.log("endpoint hit");

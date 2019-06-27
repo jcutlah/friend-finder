@@ -5,9 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friend Finder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <style>
+        a {
+            cursor: pointer;
+        }
+        #users img {
+            width: 300px;
+        }
+        .edit-profile {
+            position: absolute;
+            opacity: 0;
+            transition: opacity .5s;
+            top: 10px;
+            right: 10px;
+        }
+        .edit-profile a {
+            text-decoration: none;
+            color: #000;
+        }
+        .image-wrapper {
+            position: relative;
+            width: fit-content;
+            height: fit-content;
+            margin: 0 auto;
+        }
+        .image-wrapper:hover .edit-profile {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Welcome to Friend Finder</h1>
+                <p>Friend finder is an app that allows you to find a "friend", based on how similarly you answer a series of questions.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div id="not-user" class="col">
+                <p>It looks like you haven't "put yourself out there yet". <a href="/survey">Click here</a> to be a part of our network of good good friends.</p>
+            </div>
+            <div id="is-user" class="col text-center">
+                <p>Welcome back <span id='first-name'></span>!</p>
+                <div id="users" class="row justify-content-center jumbotron">
+                    <div id="user" class="col">
+                        <p>
+                            Here is the info we have for you on file:
+                        </p>
+                        <div class="image-wrapper">
+                            <img>
+                            <div class="edit-profile">
+                                <a href="/survey" title="Update your profile info">
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p id="user-name" class="text-center"></p>
+                        
+                    </div>
+                    <div id='user-match' class="col text-center">
+                        <p>
+                            Here is the closest match we have for you on file:
+                        </p>
+                        <div class="image-wrapper">
+                            <img>
+                        </div>
+                        <p id="match-name" class="text-center"></p>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // check local storage for username
+            let user = {
+                username: localStorage.getItem('ff_username')
+            }
+            if (user.username){
+                console.log(`call friends api to get current user info and friends list`);
+                $.get('/api/friends/' + user.username).done(function(response){
+                    console.log(response, typeof response);
+                    let friend = response.match;
+                    user.name = response.user.name;
+                    user.photo = response.user.photo;
+                    user.scores = response.user.scores;
+                    $('#first-name').text(user.name);
+                    $('#user img').attr('src',user.photo);
+                    $('#user-name').text(user.name);
+                    $('#user-match img').attr('src',friend.photo);
+                    $('#match-name').text(friend.name);
+                    console.log('ideal friend', friend);
+                });
+                $('#not-user').hide();
+                $('#is-user').show();
+                // assess a matching value for each friend in the 'database'
+                
+            } else {
+                console.log(`no compatibility to check. explain what the app is, link to the survey page`);
+                $('#is-user').hide();
+                $('#not-user').show();
+            }
+            //   
+            // 
+        });
+    </script>
 </body>
 </html>
